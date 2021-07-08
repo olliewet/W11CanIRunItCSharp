@@ -1,0 +1,10 @@
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\bin\Debug\CanIRunWindows11.exe.config
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\bin\Debug\CanIRunWindows11.exe
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\bin\Debug\CanIRunWindows11.pdb
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.csprojAssemblyReference.cache
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.CanIRunThis.resources
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.Properties.Resources.resources
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.csproj.GenerateResource.cache
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.csproj.CoreCompileInputs.cache
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.exe
+C:\Users\Ollie\Desktop\Work\CanIRunWindows11\CanIRunWindows11\obj\Debug\CanIRunWindows11.pdb

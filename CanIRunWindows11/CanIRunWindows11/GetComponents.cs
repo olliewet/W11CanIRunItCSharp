@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 using System.Management;
 using Microsoft.Win32;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace CanIRunWindows11
 {
+   
     public class GetComponents
     {
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetPhysicallyInstalledSystemMemory(out long TotalMemoryInKilobytes);
         public GetComponents()
         {
             GetHardDriveInfo();
-            IsSecureBootSupported();
             RamInstalled();
+            
+            IsSecureBootSupported();        
             GetArchitecture();
             GetProcessor();
             GetFrequency();
@@ -161,17 +167,20 @@ namespace CanIRunWindows11
             }
         }
 
+        /// <summary>
+        /// Get the amount of Ram in the users system
+        /// </summary>
         public void RamInstalled()
         {
-            var searcher = new ManagementObjectSearcher(
-          "select TotalPhysicalMemory from Win32_ComputerSystem ");
-            foreach (var item in searcher.Get())
-            {
-                var raminstalled = item["TotalPhysicalMemory"];
-                RAMInstalled = raminstalled.ToString() + "GB";
-            }
+            long memKb;
+            GetPhysicallyInstalledSystemMemory(out memKb);
+            RAMInstalled = ((memKb / 1024 / 1024) + " GB of RAM installed.");
         }
 
+
+        /// <summary>
+        /// Does Not Work as intended 
+        /// </summary>
         public void IsSecureBootSupported()
         {
             int rc = 0;
@@ -200,11 +209,18 @@ namespace CanIRunWindows11
 
         public void GetHardDriveInfo()
         {
-
+            int totalDrives = 0;
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
             foreach (DriveInfo d in allDrives)
             {
+                totalDrives++;
+
+                if(d.Name == "C:\\")
+                {
+                    //Set the total space to hard drive variable 
+                }
+
                 Console.WriteLine("Drive {0}", d.Name);
                 Console.WriteLine("  Drive type: {0}", d.DriveType);
                 if (d.IsReady == true)

@@ -12,10 +12,35 @@ namespace CanIRunWindows11
 {
     public partial class CanIRunThis : Form
     {
+        GetComponents getComponents = new GetComponents();
         public CanIRunThis()
-        {
-            //Run Method Which Calls The Components 
+        {       
             InitializeComponent();
+            Architecture();
+        }
+   
+        /// <summary>
+        /// Button Clicks 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gitlink_btn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/olliewet");
+        }
+
+        private void RunScript()
+        {
+            Architecture();
+        }
+        private void Architecture()
+        {
+            if(getComponents.Architecture == "64 Bit CPU 64 Bit OS")
+            {
+                arch_result.Text = getComponents.Architecture;
+                arch_btn.Text = "";
+                arch_btn.BackColor = Color.Green;
+            }
         }
 
 

@@ -7,6 +7,11 @@ using System.Management;
 using Microsoft.Win32;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Threading;
+using System.Xml;
+using System.Collections.ObjectModel;
+using System.Management.Automation;
 
 namespace CanIRunWindows11
 {
@@ -18,15 +23,18 @@ namespace CanIRunWindows11
         static extern bool GetPhysicallyInstalledSystemMemory(out long TotalMemoryInKilobytes);
         public GetComponents()
         {
+            GetTPMVersion();
+            GetDirectXVersion();
             GetHardDriveInfo();
-            RamInstalled();
-            
-            IsSecureBootSupported();        
-            GetArchitecture();
-            GetProcessor();
             GetFrequency();
+            GetArchitecture();      
+            RamInstalled();        
+            IsSecureBootSupported();            
+            GetProcessor();      
             GetCoreCount();
         }
+
+        #region Member Variables 
         //Member Variables 
         private string cpuName;
         private string arch;
@@ -40,10 +48,9 @@ namespace CanIRunWindows11
         private string secureboot;
         private string storage;
         private string tpm;
-        /// <summary>
-        /// Properties 
-        /// </summary>
-        /// 
+        private int HardDrives;
+        private bool _hastpm;
+        #endregion
 
         #region Properties
         public string CPUName   // property
@@ -101,23 +108,31 @@ namespace CanIRunWindows11
             get { return storage; }   // get method
             set { storage = value; }  // set method
         }
-        public string TPMVersion   // property
+        public bool HasTPM   // property
         {
-            get { return tpm; }   // get method
-            set { tpm = value; }  // set method
+            get { return _hastpm; }   // get method
+            set { _hastpm = value; }  // set method
+        }
+
+        public int TotalHardDrives   // property
+        {
+            get { return HardDrives; }   // get method
+            set { HardDrives = value; }  // set method
         }
         #endregion
 
-
-        //Doesnt Work As Expected Returns 9 instead of 64 bit
+        /// <summary>
+        /// Gets the AdressWidth of the processor (64/32 Bit)
+        /// Checks what the bit is of the Operating System
+        /// </summary>     
         public void GetArchitecture()
         {
             var searcher = new ManagementObjectSearcher(
-           "select AddressWidth from Win32_Processor");
+            "select AddressWidth from Win32_Processor");
             foreach (var item in searcher.Get())
             {
                 var arch = item["AddressWidth"];
-                Architecture = arch.ToString() + " bit CPU";
+                Architecture = arch.ToString() + " Bit CPU";
             }
             if (Environment.Is64BitOperatingSystem)
             {
@@ -129,7 +144,12 @@ namespace CanIRunWindows11
             }
         }
 
-        //Returns The Processor Name 
+
+
+
+        /// <summary>
+        /// Returns The Full Name of The Users Processor
+        /// </summary>      
         public void GetProcessor()
         {
             ManagementObjectSearcher mosProcessor = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
@@ -144,6 +164,10 @@ namespace CanIRunWindows11
             CPUName = Procname;
         }
 
+        /// <summary>
+        /// Gets the Frequency of the Processor and Stores it within a string 
+        /// Example - 3800 HMZ
+        /// </summary>
         public void GetFrequency()
         {
             var searcher = new ManagementObjectSearcher(
@@ -156,6 +180,41 @@ namespace CanIRunWindows11
 
         }
 
+        /// <summary>
+        /// Run PowerShell Script to get TPM Version?
+        /// </summary>
+        public void GetTPMVersion()
+        {
+            using (PowerShell powerShell = PowerShell.Create())
+            {
+                // Source functions.
+                powerShell.AddScript("Get-Tpm");
+                           
+                // invoke execution on the pipeline (collecting output)
+                Collection<PSObject> PSOutput = powerShell.Invoke();
+
+                // loop through each output object item
+                foreach (PSObject outputItem in PSOutput)
+                {
+                    // if null object was dumped to the pipeline during the script then a null object may be present here
+                    if (outputItem != null)
+                    {
+                        Console.WriteLine($"Output line: [{outputItem}]");
+                    }
+                }
+                // check the other output streams (for example, the error stream)
+                if (powerShell.Streams.Error.Count > 0)
+                {
+                    // error records were written to the error stream.
+                    // Do something with the error
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Returns the Number Of Cores of the users processor 
+        /// </summary>
         public void GetCoreCount()
         {
             var searcher = new ManagementObjectSearcher(
@@ -206,9 +265,11 @@ namespace CanIRunWindows11
             }
         }
 
-
+        /// <summary>
+        /// Get the Size of the hard drive which contains operating system
+        /// </summary>
         public void GetHardDriveInfo()
-        {
+        {       
             int totalDrives = 0;
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
@@ -218,37 +279,30 @@ namespace CanIRunWindows11
 
                 if(d.Name == "C:\\")
                 {
-                    //Set the total space to hard drive variable 
-                }
-
-                Console.WriteLine("Drive {0}", d.Name);
-                Console.WriteLine("  Drive type: {0}", d.DriveType);
-                if (d.IsReady == true)
-                {
-                    Console.WriteLine("  Volume label: {0}", d.VolumeLabel);
-                    Console.WriteLine("  File system: {0}", d.DriveFormat);
-                    Console.WriteLine(
-                        "  Available space to current user:{0, 15} bytes",
-                        d.AvailableFreeSpace);
-
-                    Console.WriteLine(
-                        "  Total available space:          {0, 15} bytes",
-                        d.TotalFreeSpace);
-
-                    Console.WriteLine(
-                        "  Total size of drive:            {0, 15} bytes ",
-                        d.TotalSize);
-                }
+                    string driveName = "C:\\ : ";
+                   
+                    string totalDrivesize = ByteSizeLib.ByteSize.FromBytes(d.TotalSize).ToString();
+                    StorageAvailable = driveName + " " + totalDrivesize;                   
+                }           
             }
+            TotalHardDrives = totalDrives;
+        }
 
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Checks The Version of Direct X 
+        /// https://stackoverflow.com/a/17131828/13839509
+        /// </summary>
+        /// <returns></returns>
+        private static int GetDirectXVersion()
+        {
+            Process.Start("dxdiag", "/x dxv.xml");
+            while (!File.Exists("dxv.xml"))
+                Thread.Sleep(1000);
+            XmlDocument doc = new XmlDocument();
+            doc.Load("dxv.xml");
+            XmlNode dxd = doc.SelectSingleNode("//DxDiag");
+            XmlNode dxv = dxd.SelectSingleNode("//DirectXVersion");
+            return Convert.ToInt32(dxv.InnerText.Split(' ')[1]);
         }
     }
 }

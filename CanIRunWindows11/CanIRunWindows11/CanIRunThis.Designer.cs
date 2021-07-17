@@ -66,6 +66,8 @@ namespace CanIRunWindows11
             this.storage_btn = new System.Windows.Forms.Button();
             this.tpm_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.cpu_lbl = new System.Windows.Forms.Label();
+            this.gpu_lbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -175,7 +177,7 @@ namespace CanIRunWindows11
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(282, 9);
+            this.label1.Location = new System.Drawing.Point(121, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(314, 26);
             this.label1.TabIndex = 10;
@@ -492,11 +494,31 @@ namespace CanIRunWindows11
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(362, 35);
+            this.label3.Location = new System.Drawing.Point(130, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 19);
             this.label3.TabIndex = 25;
             this.label3.Text = "Oliver Richard Dry";
+            // 
+            // cpu_lbl
+            // 
+            this.cpu_lbl.AutoSize = true;
+            this.cpu_lbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpu_lbl.Location = new System.Drawing.Point(479, 12);
+            this.cpu_lbl.Name = "cpu_lbl";
+            this.cpu_lbl.Size = new System.Drawing.Size(35, 19);
+            this.cpu_lbl.TabIndex = 26;
+            this.cpu_lbl.Text = "CPU";
+            // 
+            // gpu_lbl
+            // 
+            this.gpu_lbl.AutoSize = true;
+            this.gpu_lbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpu_lbl.Location = new System.Drawing.Point(479, 33);
+            this.gpu_lbl.Name = "gpu_lbl";
+            this.gpu_lbl.Size = new System.Drawing.Size(37, 19);
+            this.gpu_lbl.TabIndex = 27;
+            this.gpu_lbl.Text = "GPU";
             // 
             // CanIRunThis
             // 
@@ -504,6 +526,8 @@ namespace CanIRunWindows11
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.gpu_lbl);
+            this.Controls.Add(this.cpu_lbl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tpm_btn);
             this.Controls.Add(this.storage_btn);
@@ -571,6 +595,8 @@ namespace CanIRunWindows11
         private System.Windows.Forms.Button storage_btn;
         private System.Windows.Forms.Button tpm_btn;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label cpu_lbl;
+        private System.Windows.Forms.Label gpu_lbl;
     }
 }
 

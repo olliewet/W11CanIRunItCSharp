@@ -32,6 +32,8 @@ namespace CanIRunWindows11
             IsSecureBootSupported();            
             GetProcessor();      
             GetCoreCount();
+            GetGraphicsCard();
+            GetTPM();
         }
 
         #region Member Variables 
@@ -48,11 +50,17 @@ namespace CanIRunWindows11
         private string secureboot;
         private string storage;
         private string tpm;
+        private string GPU;
         private int HardDrives;
         private bool _hastpm;
         #endregion
 
         #region Properties
+        public string GraphicsCard   // property
+        {
+            get { return GPU; }   // get method
+            set { GPU = value; }  // set method
+        }
         public string CPUName   // property
         {
             get { return cpuName; }   // get method
@@ -279,10 +287,10 @@ namespace CanIRunWindows11
 
                 if(d.Name == "C:\\")
                 {
-                    string driveName = "C:\\ : ";
-                   
+                    //string driveName = "C:\\ : ";                
                     string totalDrivesize = ByteSizeLib.ByteSize.FromBytes(d.TotalSize).ToString();
-                    StorageAvailable = driveName + " " + totalDrivesize;                   
+                    //StorageAvailable = driveName + " " + totalDrivesize;       
+                    StorageAvailable = totalDrivesize;
                 }           
             }
             TotalHardDrives = totalDrives;
@@ -293,7 +301,7 @@ namespace CanIRunWindows11
         /// https://stackoverflow.com/a/17131828/13839509
         /// </summary>
         /// <returns></returns>
-        private static int GetDirectXVersion()
+        private void GetDirectXVersion()
         {
             Process.Start("dxdiag", "/x dxv.xml");
             while (!File.Exists("dxv.xml"))
@@ -302,7 +310,40 @@ namespace CanIRunWindows11
             doc.Load("dxv.xml");
             XmlNode dxd = doc.SelectSingleNode("//DxDiag");
             XmlNode dxv = dxd.SelectSingleNode("//DirectXVersion");
-            return Convert.ToInt32(dxv.InnerText.Split(' ')[1]);
+            DirectX = Convert.ToInt32(dxv.InnerText.Split(' ')[1]).ToString();
+        }
+
+        private void GetGraphicsCard()
+        {
+            using (var searcher = new ManagementObjectSearcher("select * from Win32_VideoController"))
+            {
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    GraphicsCard = ("Name  -  " + obj["Name"]);  
+                }
+            }
+        }
+        private void GetTPM()
+        {
+            try
+            {
+                using (var searcher = new ManagementObjectSearcher("select * from Win32_Tpm"))
+                {
+                    foreach (ManagementObject obj in searcher.Get())
+                    {
+                        GraphicsCard = ("Name  -  " + obj["IsActivated_InitialValue"]);
+                        GraphicsCard = ("Name  -  " + obj["IsEnabled_InitialValue"]);
+                        GraphicsCard = ("Name  -  " + obj["IsOwned_InitialValue"]);
+                        GraphicsCard = ("Name  -  " + obj["SpecVersion"]);
+                        GraphicsCard = ("Name  -  " + obj["ManufacturerVersion"]);
+                        GraphicsCard = ("Name  -  " + obj["ManufacturerVersionInfo"]);
+                    }
+                    HasTPM = true;
+                }
+            }catch
+            {
+                HasTPM = false;
+            }
         }
     }
 }

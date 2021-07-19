@@ -1,0 +1,20 @@
+AMD Ryzen 2000
+AMD Ryzen 3000
+AMD Ryzen 4000
+AMD Ryzen 5000
+AMD Athlon
+AMD EPYC 2nd Gen
+AMD EPYC 3rd Gen
+AMD Ryzen Threadripper 2000
+AMD Ryzen Threadripper 3000
+AMD Ryzen Threadripper PRO 3000 
+Intel Atom 
+Intel Celeron 
+Intel Pentium
+Intel Xeon
+Intel Core 8th Gen 
+Intel Core 9th Gen 
+Intel Core 10th Gen 
+Intel Core 10th Gen 
+Intel Core 11th Gen 
+Intel Core 11th Gen

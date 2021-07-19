@@ -39,6 +39,7 @@ namespace CanIRunWindows11
             SetRAM();
             SetStorage();
             SetGPU();
+            SetCPUComp();
         }
 
         private void Architecture()
@@ -65,6 +66,20 @@ namespace CanIRunWindows11
                 core_btn.BackColor = Color.Green;             
             }
         }
+        private void SetCPUComp()
+        {
+            bool isComp = getComponents.CpuCompabtibility;
+            if(isComp)
+            {
+                core_result.Text = "CPU is Compabtible";
+                core_btn.BackColor = Color.Green;
+            }
+            else
+            {
+                comp_result.Text = "CPU is not currently listed in Compabtible CPUs";
+            }
+        }
+
 
         private void SetRAM()
         {

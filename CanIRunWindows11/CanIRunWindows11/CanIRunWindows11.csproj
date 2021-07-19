@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="git.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CPUList.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

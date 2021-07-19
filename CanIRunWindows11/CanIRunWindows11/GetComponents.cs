@@ -34,6 +34,11 @@ namespace CanIRunWindows11
             GetCoreCount();
             GetGraphicsCard();
             GetTPM();
+            GetIntelGen();
+            IsCPUCompabitle();
+            
+
+
         }
 
         #region Member Variables 
@@ -41,7 +46,7 @@ namespace CanIRunWindows11
         private string cpuName;
         private string arch;
         private string boot;
-        private string compat;
+        private bool compat;
         private uint corecount;
         private string freq;
         private string direx;
@@ -51,6 +56,7 @@ namespace CanIRunWindows11
         private string storage;
         private string tpm;
         private string GPU;
+        private string _cpugen;
         private int HardDrives;
         private bool _hastpm;
         #endregion
@@ -60,6 +66,11 @@ namespace CanIRunWindows11
         {
             get { return GPU; }   // get method
             set { GPU = value; }  // set method
+        }
+        public string CPUGen   // property
+        {
+            get { return _cpugen; }   // get method
+            set { _cpugen = value; }  // set method
         }
         public string CPUName   // property
         {
@@ -76,7 +87,7 @@ namespace CanIRunWindows11
             get { return boot; }   // get method
             set { boot = value; }  // set method
         }
-        public string CpuCompabtibility   // property
+        public bool CpuCompabtibility   // property
         {
             get { return compat; }   // get method
             set { compat = value; }  // set method
@@ -243,6 +254,45 @@ namespace CanIRunWindows11
             GetPhysicallyInstalledSystemMemory(out memKb);
             RAMInstalled = ((memKb / 1024 / 1024) + " GB of RAM installed.");
         }
+
+        private void IsCPUCompabitle()
+        {
+            List<string> listOfCPUs = File.ReadAllLines("CPUList.txt").ToList();
+            foreach (string cpu in listOfCPUs)
+            {
+                if(cpu == CPUGen)
+                {
+                    CpuCompabtibility = true;
+                    break;
+                }
+                else
+                {
+                    CpuCompabtibility = false; 
+                }
+            }
+        }
+
+        private void GetIntelGen()
+        {
+            string cpuGen = "";
+            List<string> CPUNameList = new List<string>();
+            CPUNameList = CPUName.Split(' ').ToList();
+
+            foreach(string s in CPUNameList)
+            {              
+                if(s.StartsWith("i3")| s.StartsWith("i5") | s.StartsWith("i7") | s.StartsWith("i9"))
+                {
+                   cpuGen = s[3].ToString();
+                   break;
+                }
+            }
+            if (cpuGen != "")
+            {
+                CPUGen = "Intel Core " + cpuGen + "th Gen";
+            }
+        }
+
+
 
 
         /// <summary>

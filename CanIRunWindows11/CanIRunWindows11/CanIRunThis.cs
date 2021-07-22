@@ -40,6 +40,8 @@ namespace CanIRunWindows11
             SetStorage();
             SetGPU();
             SetCPUComp();
+            SetTPM();
+            SetSecureBoot();
         }
 
         private void Architecture()
@@ -47,8 +49,8 @@ namespace CanIRunWindows11
             if(getComponents.Architecture == "64 Bit CPU 64 Bit OS")
             {
                 arch_result.Text = getComponents.Architecture;
-                arch_btn.Text = "";
-                arch_btn.BackColor = Color.Green;
+                Architecture_PB.Text = "";
+                Architecture_PB.BackColor = Color.Green;
             }
         }
 
@@ -63,7 +65,7 @@ namespace CanIRunWindows11
             if (Cores >= 2)
             {
                 core_result.Text = getComponents.CoreCount.ToString() + " Cores";
-                core_btn.BackColor = Color.Green;             
+                core_pb.BackColor = Color.Green;             
             }
         }
         private void SetCPUComp()
@@ -71,8 +73,8 @@ namespace CanIRunWindows11
             bool isComp = getComponents.CpuCompabtibility;
             if(isComp)
             {
-                core_result.Text = "CPU is Compabtible";
-                core_btn.BackColor = Color.Green;
+                comp_result.Text = "CPU is Compabtible";
+                cpuc_pb.BackColor = Color.Green;
             }
             else
             {
@@ -88,11 +90,11 @@ namespace CanIRunWindows11
             if (ramInstalled >= 4)
             {
                 ram_result.Text = getComponents.RAMInstalled;
-                ram_button.BackColor = Color.Green;
+                ram_pb.BackColor = Color.Green;
             }
             else
             {
-                core_result.Text = getComponents.CoreCount.ToString() + "GB Installed";
+                ram_result.Text = getComponents.CoreCount.ToString() + "GB Installed";
             }
         }
 
@@ -103,7 +105,7 @@ namespace CanIRunWindows11
             if (avaliableStorage >= 64)
             {
                 storavaliable_result.Text = getComponents.StorageAvailable + " Avaliable";
-                storage_btn.BackColor = Color.Green;
+                sa_pb.BackColor = Color.Green;
             }
             else
             {
@@ -120,7 +122,7 @@ namespace CanIRunWindows11
                 directX_result.Text = "Direct X " + getComponents.DirectX.ToString();
                 if(DVersion >= 12)
                 {
-                    directx_btn.BackColor = Color.Green;
+                    dx_pb.BackColor = Color.Green;
                     directX_result.Text = "Direct X " + getComponents.DirectX.ToString();
                 }
                 else
@@ -134,11 +136,35 @@ namespace CanIRunWindows11
             }
             
         }
+
+        private void SetTPM()
+        {
+            if(!getComponents.HasTPM)
+            {
+                tpm_result.Text = "TPM Not Installed";              
+            }
+            else
+            {
+                tpm_result.Text = "TPM is Installed";
+                tpm_pb.BackColor = Color.Green;
+            }
+        }
         private void SetGPU()
         {
-            //Add error checking to make sure user has got direct x 
-            gpu_lbl.Text = getComponents.GraphicsCard;
+            gpu_lbl.Text = getComponents.GraphicsCard;        
+        }
 
+        private void SetSecureBoot()
+        {
+            if(getComponents.SecureBoot)
+            {
+                sb_pb.BackColor = Color.Green;
+                secure_result.Text = "Secure Boot Supported";
+            }
+            else
+            {
+                secure_result.Text = "Secure Boot Not Supported";
+            }
         }
 
     }

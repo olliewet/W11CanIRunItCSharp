@@ -55,22 +55,32 @@ namespace CanIRunWindows11
             this.ram_result = new System.Windows.Forms.Label();
             this.diskpar_result = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.arch_btn = new System.Windows.Forms.Button();
-            this.boot_btn = new System.Windows.Forms.Button();
-            this.cpu_btn = new System.Windows.Forms.Button();
-            this.core_btn = new System.Windows.Forms.Button();
-            this.directx_btn = new System.Windows.Forms.Button();
-            this.disk_btn = new System.Windows.Forms.Button();
-            this.ram_button = new System.Windows.Forms.Button();
-            this.secure_btn = new System.Windows.Forms.Button();
-            this.storage_btn = new System.Windows.Forms.Button();
-            this.tpm_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cpu_lbl = new System.Windows.Forms.Label();
             this.gpu_lbl = new System.Windows.Forms.Label();
+            this.Architecture_PB = new System.Windows.Forms.PictureBox();
+            this.boot_pb = new System.Windows.Forms.PictureBox();
+            this.sb_pb = new System.Windows.Forms.PictureBox();
+            this.sa_pb = new System.Windows.Forms.PictureBox();
+            this.tpm_pb = new System.Windows.Forms.PictureBox();
+            this.ram_pb = new System.Windows.Forms.PictureBox();
+            this.diskp_pb = new System.Windows.Forms.PictureBox();
+            this.dx_pb = new System.Windows.Forms.PictureBox();
+            this.core_pb = new System.Windows.Forms.PictureBox();
+            this.cpuc_pb = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Architecture_PB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boot_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sb_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sa_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tpm_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ram_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diskp_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dx_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.core_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpuc_pb)).BeginInit();
             this.SuspendLayout();
             // 
             // arch_label
@@ -380,116 +390,6 @@ namespace CanIRunWindows11
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 14;
             // 
-            // arch_btn
-            // 
-            this.arch_btn.BackColor = System.Drawing.Color.Maroon;
-            this.arch_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.arch_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.arch_btn.Location = new System.Drawing.Point(121, 66);
-            this.arch_btn.Name = "arch_btn";
-            this.arch_btn.Size = new System.Drawing.Size(55, 19);
-            this.arch_btn.TabIndex = 15;
-            this.arch_btn.UseVisualStyleBackColor = false;
-            // 
-            // boot_btn
-            // 
-            this.boot_btn.BackColor = System.Drawing.Color.Maroon;
-            this.boot_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.boot_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.boot_btn.Location = new System.Drawing.Point(121, 104);
-            this.boot_btn.Name = "boot_btn";
-            this.boot_btn.Size = new System.Drawing.Size(55, 19);
-            this.boot_btn.TabIndex = 16;
-            this.boot_btn.UseVisualStyleBackColor = false;
-            // 
-            // cpu_btn
-            // 
-            this.cpu_btn.BackColor = System.Drawing.Color.Maroon;
-            this.cpu_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cpu_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cpu_btn.Location = new System.Drawing.Point(121, 142);
-            this.cpu_btn.Name = "cpu_btn";
-            this.cpu_btn.Size = new System.Drawing.Size(55, 19);
-            this.cpu_btn.TabIndex = 17;
-            this.cpu_btn.UseVisualStyleBackColor = false;
-            // 
-            // core_btn
-            // 
-            this.core_btn.BackColor = System.Drawing.Color.Maroon;
-            this.core_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.core_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.core_btn.Location = new System.Drawing.Point(121, 182);
-            this.core_btn.Name = "core_btn";
-            this.core_btn.Size = new System.Drawing.Size(55, 19);
-            this.core_btn.TabIndex = 18;
-            this.core_btn.UseVisualStyleBackColor = false;
-            // 
-            // directx_btn
-            // 
-            this.directx_btn.BackColor = System.Drawing.Color.Maroon;
-            this.directx_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.directx_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.directx_btn.Location = new System.Drawing.Point(121, 214);
-            this.directx_btn.Name = "directx_btn";
-            this.directx_btn.Size = new System.Drawing.Size(55, 19);
-            this.directx_btn.TabIndex = 19;
-            this.directx_btn.UseVisualStyleBackColor = false;
-            // 
-            // disk_btn
-            // 
-            this.disk_btn.BackColor = System.Drawing.Color.Maroon;
-            this.disk_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.disk_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.disk_btn.Location = new System.Drawing.Point(121, 250);
-            this.disk_btn.Name = "disk_btn";
-            this.disk_btn.Size = new System.Drawing.Size(55, 19);
-            this.disk_btn.TabIndex = 20;
-            this.disk_btn.UseVisualStyleBackColor = false;
-            // 
-            // ram_button
-            // 
-            this.ram_button.BackColor = System.Drawing.Color.Maroon;
-            this.ram_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ram_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ram_button.Location = new System.Drawing.Point(121, 288);
-            this.ram_button.Name = "ram_button";
-            this.ram_button.Size = new System.Drawing.Size(55, 19);
-            this.ram_button.TabIndex = 21;
-            this.ram_button.UseVisualStyleBackColor = false;
-            // 
-            // secure_btn
-            // 
-            this.secure_btn.BackColor = System.Drawing.Color.Maroon;
-            this.secure_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.secure_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.secure_btn.Location = new System.Drawing.Point(121, 324);
-            this.secure_btn.Name = "secure_btn";
-            this.secure_btn.Size = new System.Drawing.Size(55, 19);
-            this.secure_btn.TabIndex = 22;
-            this.secure_btn.UseVisualStyleBackColor = false;
-            // 
-            // storage_btn
-            // 
-            this.storage_btn.BackColor = System.Drawing.Color.Maroon;
-            this.storage_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.storage_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.storage_btn.Location = new System.Drawing.Point(121, 356);
-            this.storage_btn.Name = "storage_btn";
-            this.storage_btn.Size = new System.Drawing.Size(55, 19);
-            this.storage_btn.TabIndex = 23;
-            this.storage_btn.UseVisualStyleBackColor = false;
-            // 
-            // tpm_btn
-            // 
-            this.tpm_btn.BackColor = System.Drawing.Color.Maroon;
-            this.tpm_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tpm_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tpm_btn.Location = new System.Drawing.Point(121, 392);
-            this.tpm_btn.Name = "tpm_btn";
-            this.tpm_btn.Size = new System.Drawing.Size(55, 19);
-            this.tpm_btn.TabIndex = 24;
-            this.tpm_btn.UseVisualStyleBackColor = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -520,25 +420,115 @@ namespace CanIRunWindows11
             this.gpu_lbl.TabIndex = 27;
             this.gpu_lbl.Text = "GPU";
             // 
+            // Architecture_PB
+            // 
+            this.Architecture_PB.BackColor = System.Drawing.Color.Maroon;
+            this.Architecture_PB.Location = new System.Drawing.Point(121, 66);
+            this.Architecture_PB.Name = "Architecture_PB";
+            this.Architecture_PB.Size = new System.Drawing.Size(58, 19);
+            this.Architecture_PB.TabIndex = 28;
+            this.Architecture_PB.TabStop = false;
+            // 
+            // boot_pb
+            // 
+            this.boot_pb.BackColor = System.Drawing.Color.Maroon;
+            this.boot_pb.Location = new System.Drawing.Point(121, 103);
+            this.boot_pb.Name = "boot_pb";
+            this.boot_pb.Size = new System.Drawing.Size(58, 19);
+            this.boot_pb.TabIndex = 29;
+            this.boot_pb.TabStop = false;
+            // 
+            // sb_pb
+            // 
+            this.sb_pb.BackColor = System.Drawing.Color.Maroon;
+            this.sb_pb.Location = new System.Drawing.Point(121, 323);
+            this.sb_pb.Name = "sb_pb";
+            this.sb_pb.Size = new System.Drawing.Size(58, 19);
+            this.sb_pb.TabIndex = 30;
+            this.sb_pb.TabStop = false;
+            // 
+            // sa_pb
+            // 
+            this.sa_pb.BackColor = System.Drawing.Color.Maroon;
+            this.sa_pb.Location = new System.Drawing.Point(121, 355);
+            this.sa_pb.Name = "sa_pb";
+            this.sa_pb.Size = new System.Drawing.Size(58, 19);
+            this.sa_pb.TabIndex = 31;
+            this.sa_pb.TabStop = false;
+            // 
+            // tpm_pb
+            // 
+            this.tpm_pb.BackColor = System.Drawing.Color.Maroon;
+            this.tpm_pb.Location = new System.Drawing.Point(121, 391);
+            this.tpm_pb.Name = "tpm_pb";
+            this.tpm_pb.Size = new System.Drawing.Size(58, 19);
+            this.tpm_pb.TabIndex = 32;
+            this.tpm_pb.TabStop = false;
+            // 
+            // ram_pb
+            // 
+            this.ram_pb.BackColor = System.Drawing.Color.Maroon;
+            this.ram_pb.Location = new System.Drawing.Point(121, 287);
+            this.ram_pb.Name = "ram_pb";
+            this.ram_pb.Size = new System.Drawing.Size(58, 19);
+            this.ram_pb.TabIndex = 33;
+            this.ram_pb.TabStop = false;
+            // 
+            // diskp_pb
+            // 
+            this.diskp_pb.BackColor = System.Drawing.Color.Maroon;
+            this.diskp_pb.Location = new System.Drawing.Point(121, 249);
+            this.diskp_pb.Name = "diskp_pb";
+            this.diskp_pb.Size = new System.Drawing.Size(58, 19);
+            this.diskp_pb.TabIndex = 34;
+            this.diskp_pb.TabStop = false;
+            // 
+            // dx_pb
+            // 
+            this.dx_pb.BackColor = System.Drawing.Color.Maroon;
+            this.dx_pb.Location = new System.Drawing.Point(121, 217);
+            this.dx_pb.Name = "dx_pb";
+            this.dx_pb.Size = new System.Drawing.Size(58, 19);
+            this.dx_pb.TabIndex = 35;
+            this.dx_pb.TabStop = false;
+            // 
+            // core_pb
+            // 
+            this.core_pb.BackColor = System.Drawing.Color.Maroon;
+            this.core_pb.Location = new System.Drawing.Point(121, 181);
+            this.core_pb.Name = "core_pb";
+            this.core_pb.Size = new System.Drawing.Size(58, 19);
+            this.core_pb.TabIndex = 36;
+            this.core_pb.TabStop = false;
+            // 
+            // cpuc_pb
+            // 
+            this.cpuc_pb.BackColor = System.Drawing.Color.Maroon;
+            this.cpuc_pb.Location = new System.Drawing.Point(121, 142);
+            this.cpuc_pb.Name = "cpuc_pb";
+            this.cpuc_pb.Size = new System.Drawing.Size(58, 19);
+            this.cpuc_pb.TabIndex = 37;
+            this.cpuc_pb.TabStop = false;
+            // 
             // CanIRunThis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cpuc_pb);
+            this.Controls.Add(this.core_pb);
+            this.Controls.Add(this.dx_pb);
+            this.Controls.Add(this.diskp_pb);
+            this.Controls.Add(this.ram_pb);
+            this.Controls.Add(this.tpm_pb);
+            this.Controls.Add(this.sa_pb);
+            this.Controls.Add(this.sb_pb);
+            this.Controls.Add(this.boot_pb);
+            this.Controls.Add(this.Architecture_PB);
             this.Controls.Add(this.gpu_lbl);
             this.Controls.Add(this.cpu_lbl);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tpm_btn);
-            this.Controls.Add(this.storage_btn);
-            this.Controls.Add(this.secure_btn);
-            this.Controls.Add(this.ram_button);
-            this.Controls.Add(this.disk_btn);
-            this.Controls.Add(this.directx_btn);
-            this.Controls.Add(this.core_btn);
-            this.Controls.Add(this.cpu_btn);
-            this.Controls.Add(this.boot_btn);
-            this.Controls.Add(this.arch_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
@@ -551,6 +541,16 @@ namespace CanIRunWindows11
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Architecture_PB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boot_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sb_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sa_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tpm_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ram_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diskp_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dx_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.core_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpuc_pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,19 +584,19 @@ namespace CanIRunWindows11
         private System.Windows.Forms.Label ram_result;
         private System.Windows.Forms.Label diskpar_result;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button arch_btn;
-        private System.Windows.Forms.Button boot_btn;
-        private System.Windows.Forms.Button cpu_btn;
-        private System.Windows.Forms.Button core_btn;
-        private System.Windows.Forms.Button directx_btn;
-        private System.Windows.Forms.Button disk_btn;
-        private System.Windows.Forms.Button ram_button;
-        private System.Windows.Forms.Button secure_btn;
-        private System.Windows.Forms.Button storage_btn;
-        private System.Windows.Forms.Button tpm_btn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label cpu_lbl;
         private System.Windows.Forms.Label gpu_lbl;
+        private System.Windows.Forms.PictureBox Architecture_PB;
+        private System.Windows.Forms.PictureBox boot_pb;
+        private System.Windows.Forms.PictureBox sb_pb;
+        private System.Windows.Forms.PictureBox sa_pb;
+        private System.Windows.Forms.PictureBox tpm_pb;
+        private System.Windows.Forms.PictureBox ram_pb;
+        private System.Windows.Forms.PictureBox diskp_pb;
+        private System.Windows.Forms.PictureBox dx_pb;
+        private System.Windows.Forms.PictureBox core_pb;
+        private System.Windows.Forms.PictureBox cpuc_pb;
     }
 }
 

@@ -36,9 +36,6 @@ namespace CanIRunWindows11
             GetTPM();
             GetIntelGen();
             IsCPUCompabitle();
-            
-
-
         }
 
         #region Member Variables 
@@ -52,9 +49,8 @@ namespace CanIRunWindows11
         private string direx;
         private string disk;
         private string ram;
-        private string secureboot;
+        private bool secureboot;
         private string storage;
-        private string tpm;
         private string GPU;
         private string _cpugen;
         private int HardDrives;
@@ -117,7 +113,7 @@ namespace CanIRunWindows11
             get { return ram; }   // get method
             set { ram = value; }  // set method
         }
-        public string SecureBoot   // property
+        public bool SecureBoot   // property
         {
             get { return secureboot; }   // get method
             set { secureboot = value; }  // set method
@@ -311,15 +307,15 @@ namespace CanIRunWindows11
             }
             catch
             {
-
+                //add error handling 
             }
             if (rc == 1)
             {
-                SecureBoot = "Supported";
+                SecureBoot = true;
             }
             else
             {
-                SecureBoot = "Not Supported";
+                SecureBoot = false;
             }
         }
 
@@ -375,18 +371,20 @@ namespace CanIRunWindows11
         }
         private void GetTPM()
         {
+            List<string> TPMProperties = new List<string>();
             try
             {
                 using (var searcher = new ManagementObjectSearcher("select * from Win32_Tpm"))
                 {
                     foreach (ManagementObject obj in searcher.Get())
                     {
-                        GraphicsCard = ("Name  -  " + obj["IsActivated_InitialValue"]);
-                        GraphicsCard = ("Name  -  " + obj["IsEnabled_InitialValue"]);
-                        GraphicsCard = ("Name  -  " + obj["IsOwned_InitialValue"]);
-                        GraphicsCard = ("Name  -  " + obj["SpecVersion"]);
-                        GraphicsCard = ("Name  -  " + obj["ManufacturerVersion"]);
-                        GraphicsCard = ("Name  -  " + obj["ManufacturerVersionInfo"]);
+                        TPMProperties.Add("Name  -  " + obj["IsActivated_InitialValue"]);
+         
+                        TPMProperties.Add("Name  -  " + obj["IsEnabled_InitialValue"]);
+                        TPMProperties.Add("Name  -  " + obj["IsOwned_InitialValue"]);
+                        TPMProperties.Add("Name  -  " + obj["SpecVersion"]);
+                        TPMProperties.Add("Name  -  " + obj["ManufacturerVersion"]);
+                        TPMProperties.Add("Name  -  " + obj["ManufacturerVersionInfo"]);
                     }
                     HasTPM = true;
                 }

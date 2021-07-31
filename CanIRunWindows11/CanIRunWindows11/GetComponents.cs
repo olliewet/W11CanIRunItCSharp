@@ -23,6 +23,7 @@ namespace CanIRunWindows11
         static extern bool GetPhysicallyInstalledSystemMemory(out long TotalMemoryInKilobytes);
         public GetComponents()
         {
+            IsWindowsUEFI();
             GetTPMVersion();
             GetDirectXVersion();
             GetHardDriveInfo();
@@ -55,6 +56,7 @@ namespace CanIRunWindows11
         private string _cpugen;
         private int HardDrives;
         private bool _hastpm;
+        private bool _hasUEFI;
         #endregion
 
         #region Properties
@@ -62,6 +64,12 @@ namespace CanIRunWindows11
         {
             get { return GPU; }   // get method
             set { GPU = value; }  // set method
+        }
+        public bool HasUEFI
+        {
+            get { return _hasUEFI; }
+            set { _hasUEFI = value; }
+
         }
         public string CPUGen   // property
         {
@@ -369,6 +377,40 @@ namespace CanIRunWindows11
                 }
             }
         }
+
+
+        //Stackover Flow 
+        public const int ERROR_INVALID_FUNCTION = 1;
+
+        [DllImport("kernel32.dll",
+            EntryPoint = "GetFirmwareEnvironmentVariableW",
+            SetLastError = true,
+            CharSet = CharSet.Unicode,
+            ExactSpelling = true,
+            CallingConvention = CallingConvention.StdCall)]
+        public static extern int GetFirmwareType(string lpName, string lpGUID, IntPtr pBuffer, uint size);
+
+        public  void IsWindowsUEFI()
+        {
+            // Call the function with a dummy variable name and a dummy variable namespace (function will fail because these don't exist.)
+            GetFirmwareType("", "{00000000-0000-0000-0000-000000000000}", IntPtr.Zero, 0);
+
+            if (Marshal.GetLastWin32Error() == ERROR_INVALID_FUNCTION)
+            {
+                // Calling the function threw an ERROR_INVALID_FUNCTION win32 error, which gets thrown if either
+                // - The mainboard doesn't support UEFI and/or
+                // - Windows is installed in legacy BIOS mode
+                HasUEFI = false;
+            }
+            else
+            {
+                HasUEFI = true; ;
+                // If the system supports UEFI and Windows is installed in UEFI mode it doesn't throw the above error, but a more specific UEFI error
+
+            }
+        }
+
+
         private void GetTPM()
         {
             List<string> TPMProperties = new List<string>();

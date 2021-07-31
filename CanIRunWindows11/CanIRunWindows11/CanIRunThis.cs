@@ -42,6 +42,7 @@ namespace CanIRunWindows11
             SetCPUComp();
             SetTPM();
             SetSecureBoot();
+            SetBootMethod();
         }
 
         private void Architecture()
@@ -51,6 +52,20 @@ namespace CanIRunWindows11
                 arch_result.Text = getComponents.Architecture;
                 Architecture_PB.Text = "";
                 Architecture_PB.BackColor = Color.Green;
+            }
+        }
+
+        private void SetBootMethod()
+        {
+            bool hasUefi = getComponents.HasUEFI;
+            if(hasUefi)
+            {
+                boot_result.Text = "Uefi";
+                boot_pb.BackColor = Color.Green;
+            }
+            else
+            {
+                boot_result.Text = "Uefi Not Detected";
             }
         }
 

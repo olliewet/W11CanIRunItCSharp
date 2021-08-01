@@ -39,108 +39,88 @@ namespace CanIRunWindows11
             IsCPUCompabitle();
         }
 
-        #region Member Variables 
-        //Member Variables 
-        private string cpuName;
-        private string arch;
-        private string boot;
-        private bool compat;
-        private uint corecount;
-        private string freq;
-        private string direx;
-        private string disk;
-        private string ram;
-        private bool secureboot;
-        private string storage;
-        private string GPU;
-        private string _cpugen;
-        private int HardDrives;
-        private bool _hastpm;
-        private bool _hasUEFI;
-        #endregion
-
         #region Properties
-        public string GraphicsCard   // property
+        public string GraphicsCard
         {
-            get { return GPU; }   // get method
-            set { GPU = value; }  // set method
+            get;
+            set;
         }
         public bool HasUEFI
         {
-            get { return _hasUEFI; }
-            set { _hasUEFI = value; }
+            get;
+            set;
 
         }
-        public string CPUGen   // property
+        public string CPUGen
         {
-            get { return _cpugen; }   // get method
-            set { _cpugen = value; }  // set method
+            get;
+            set;
         }
-        public string CPUName   // property
+        public string CPUName
         {
-            get { return cpuName; }   // get method
-            set { cpuName = value; }  // set method
+            get;
+            set;
         }
-        public string Architecture   // property
+        public string Architecture
         {
-            get { return arch; }   // get method
-            set { arch = value; }  // set method
+            get;
+            set;
         }
-        public string BootMethod   // property
+        public string BootMethod 
         {
-            get { return boot; }   // get method
-            set { boot = value; }  // set method
+            get;
+            set;
         }
-        public bool CpuCompabtibility   // property
+        public bool CpuCompabtibility 
         {
-            get { return compat; }   // get method
-            set { compat = value; }  // set method
+            get;
+            set;
         }
-        public uint CoreCount   // property
+        public uint CoreCount   
         {
-            get { return corecount; }   // get method
-            set { corecount = value; }  // set method
+            get;
+            set;
         }
-        public string Frequency   // property
+        public string Frequency 
         {
-            get { return freq; }   // get method
-            set { freq = value; }  // set method
+            get;
+            set;
         }
-        public string DirectX   // property
+        public string DirectX 
         {
-            get { return direx; }   // get method
-            set { direx = value; }  // set method
+            get;
+            set;
         }
-        public string DiskPartition   // property
+        public string DiskPartition
         {
-            get { return disk; }   // get method
-            set { disk = value; }  // set method
+            get;
+            set;
         }
-        public string RAMInstalled   // property
+        public string RAMInstalled
         {
-            get { return ram; }   // get method
-            set { ram = value; }  // set method
+            get;
+            set;
         }
-        public bool SecureBoot   // property
+        public bool SecureBoot
         {
-            get { return secureboot; }   // get method
-            set { secureboot = value; }  // set method
+            get;
+            set;
         }
-        public string StorageAvailable   // property
+        public string StorageAvailable
         {
-            get { return storage; }   // get method
-            set { storage = value; }  // set method
+            get;
+            set;
         }
-        public bool HasTPM   // property
+        public bool HasTPM
         {
-            get { return _hastpm; }   // get method
-            set { _hastpm = value; }  // set method
+            get;
+            set;
         }
 
-        public int TotalHardDrives   // property
+        public int TotalHardDrives
         {
-            get { return HardDrives; }   // get method
-            set { HardDrives = value; }  // set method
+            get;
+            set;
         }
         #endregion
 

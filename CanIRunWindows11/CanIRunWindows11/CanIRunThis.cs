@@ -20,11 +20,6 @@ namespace CanIRunWindows11
             RunScript();
         }
    
-        /// <summary>
-        /// Button Clicks 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void gitlink_btn_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/olliewet");
